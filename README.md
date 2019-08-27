@@ -15,7 +15,7 @@ Visualize relationships between variables using pairs plot and correlation matri
 
 ![pairs plot](images/pairs_plot.png?raw=true)
 
-Check correlations more precisely using correlation heatmap:
+Most variables seem to be weakly correlated. One aspect that does stand out is the correlation between free and total SO2 (which seems reasonable). We can check the correlations more precisely using a correlation heatmap:
 
 ![corr_heatmap](images/corr_heatmap.png?raw=true)
 
