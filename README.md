@@ -1,6 +1,6 @@
 # wine_quality
 
-![row of wineglasses](https://github.com/cjstoneking/wine_quality/images/row_wine_glasses_utdallas.jpg)
+![row of wineglasses](images/row_wine_glasses_utdallas.jpg?raw=true)
 ###### (image credit www.utdallas.edu)
 
 
