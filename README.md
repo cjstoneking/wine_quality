@@ -15,7 +15,7 @@ To begin with, we would like to visualize the relationship between the predictor
 
 ![response_hist](images/response_hist_with_curve_cropped.png?raw=true)
 
-Note that wine quality takes integer values, so the discretization in the histogram is present in the data, it is not caused by binning. Wine quality appears to be approximately a discretization of a normally distributed random variable, which is reassuring, because it suggests that the assumptions of the linear model are valid.
+Note that wine quality takes integer values, so the discretization in the histogram is present in the data, it is not caused by binning. The blue curve is a normal distribution fit to the data, and it is clearly a good fit. Therefore, wine quality appears to be approximately a discretization of a normally distributed random variable, which is reassuring, because it suggests that the assumptions of the linear model are valid.
 
 To visualize the relationship between predictors and wine quality, we can start with boxplots of the predictors, grouped by different quality values. This takes advantage of the discretization already present in the quality values.
 
@@ -26,7 +26,7 @@ To address these issues, we can try an alternative approach, which is to draw sc
 
 ![separate_regressions](images/separate_regressions.png?raw=true)
 
-This plot clearly shows the smaller number of data points available for extreme values of quality.
+This plot clearly shows the smaller number of data points available for extreme values of quality. From either of these plots, we can see that there is a strong correlation between alcohol and quality, and moderate to weak correlations for some of the other predictors.
 
 Next, we want to check for correlations between the predictor variables. The first step is a pairs plot:
 
