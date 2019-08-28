@@ -33,7 +33,7 @@ In summary, a small subset of the variables have moderate correlations. THis is 
 
 Next, visualize the relationship between the predictor variables and the response (wine quality). Start by plotting a histogram of wine quality: 
 
-![response_hist](images/response_hist_with_curve.png?raw=true)
+![response_hist](images/response_hist_with_curve_cropped.png?raw=true)
 
 Note that wine quality takes integer values, so the discretization in the histogram is present in the data, it is not caused by binning. Wine quality appears to be approximately a discretization of a normally distributed random variable, which is reassuring, because it suggests that the assumptions of the linear model are valid.
 
