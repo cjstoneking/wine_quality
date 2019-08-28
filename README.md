@@ -39,12 +39,15 @@ Note that wine quality takes integer values, so the discretization in the histog
 
 To visualize the relationship between predictors and wine quality, we can start with boxplots of the predictors, grouped by different quality values. This takes advantage of the discretization already present in the quality values.
 
-![boxplot](images/boxplot_x=quality.png?raw=true)
+![boxplot](images/boxplot_grouped_by_response.png?raw=true)
 
-The disadvantage of this particular plot is that the numbers of data points with different quality values vary (the numbers can be read directly from the quality histogram). The boxplots at the extreme ends of the quality range are based on fewer data points and hence less reliable. Also, it might be more desireable to have quality on the y axis, because that is the variable we are interested in predicting. 
-To address these issues, we can try an alternative approach, which is to draw boxplots of quality, grouped within different quantile values of the predictors.
+The disadvantage of this particular plot is that the numbers of data points with different quality values vary (the numbers can be read directly from the quality histogram). The boxplots at the extreme ends of the quality range are based on fewer data points and hence less reliable. 
+To address these issues, we can try an alternative approach, which is to draw scatter plots of quality vs. predictors, and use ggplot's geom_count() to visualize overlapping points as solid area.
 
-![boxplot](images/boxplot_x=response.png?raw=true)
+![separate_regression](images/separate_regression.png?raw=true)
+
+This plot clearly shows the smaller number of data points available for extreme values of quality.
+
 
 We run into two problems here: some of the boxplots are very thin on the x axis, and the hinges (25% and 75% quantiles) tend to be very close to the median, because of how the quality values are distributed.
 
