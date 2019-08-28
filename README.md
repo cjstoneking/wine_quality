@@ -41,7 +41,8 @@ To visualize the relationship between predictors and wine quality, we can start 
 
 ![boxplot](images/boxplot_x=quality.png?raw=true)
 
-
+The disadvantage of this particular plot is that the numbers of data points with different quality values vary (the numbers can be read directly from the quality histogram). The boxplots at the extreme ends of the quality range are based on fewer data points and hence less reliable. Also, it might be more desireable to have quality on the y axis, because that is the variable we are interested in predicting. 
+To address these issues, we can use an alternative approach, which is to draw boxplots of quality, grouped within different quantile values of the predictors.
 
 
 ## Classification
