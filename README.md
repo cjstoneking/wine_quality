@@ -35,7 +35,7 @@ Next, visualize the relationship between the predictor variables and the respons
 
 ![response_hist](images/response_hist.png?raw=true)
 
-Note that wine quality takes integer values, so the discretization in the histogram is present in the datam, it is not caused by binning. Wine quality appears to be approximately a discretization of a normally distributed random variable, which is reassuring, because it suggests that the assumptions of the linear model are valid.
+Note that wine quality takes integer values, so the discretization in the histogram is present in the data, it is not caused by binning. Wine quality appears to be approximately a discretization of a normally distributed random variable, which is reassuring, because it suggests that the assumptions of the linear model are valid.
 
 
 ## Classification
