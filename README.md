@@ -21,13 +21,13 @@ Most variables seem to be weakly correlated. One aspect that does stand out is t
 
 Finally, print the pairs of variables with absolute correlation > 0.5:
 
-      Var1      Var2    value
-      red       chlor   0.51
-      res.sug    dens  0.55
-      vol.acd     red  0.65
-      alc    dens -0.69
-      red tot.SO2 -0.70
-      free.SO2 tot.SO2  0.72
+      Var1      Var2       corr
+      red       chlor      0.51
+      res.sug   dens       0.55
+      vol.acd   red        0.65
+      alc       dens      -0.69
+      red       tot.SO2   -0.70
+      free.SO2  tot.SO2    0.72
 
 ## Classification
 
