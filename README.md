@@ -37,6 +37,12 @@ Next, visualize the relationship between the predictor variables and the respons
 
 Note that wine quality takes integer values, so the discretization in the histogram is present in the data, it is not caused by binning. Wine quality appears to be approximately a discretization of a normally distributed random variable, which is reassuring, because it suggests that the assumptions of the linear model are valid.
 
+To visualize the relationship between predictors and wine quality, we can start with boxplots of the predictors, grouped by different quality values. This takes advantage of the discretization already present in the quality values.
+
+![boxplot](images/boxplot_x=quality.png?raw=true)
+
+
+
 
 ## Classification
 
