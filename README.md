@@ -29,6 +29,8 @@ Finally, print the pairs of variables with absolute correlation > 0.5:
       red       tot.SO2   -0.70
       free.SO2  tot.SO2    0.72
 
+In summary, a small subset of the variables have moderate correlations. THis is something to keep in mind, but we don't expect correlations of this level to strongly affect classification.
+
 ## Classification
 
 The variable we want to predict is quality, which is numeric and integer-valued.
