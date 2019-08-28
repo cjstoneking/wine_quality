@@ -32,7 +32,8 @@ Next, we want to check for correlations between the predictor variables. The fir
 
 ![pairs plot](images/pairs_plot.png?raw=true)
 
-Most variables seem to be weakly correlated. One aspect that does stand out is the correlation between free and total SO2 (it seems reasonable that these woukd be correlated). We can check the correlations more precisely using a correlation heatmap:
+
+Most variables seem to be weakly correlated. One aspect that does stand out is the correlation between free and total SO2 (it seems reasonable that these would be correlated). We can check the correlations more precisely using a correlation heatmap:
 
 ![corr_heatmap](images/corr_heatmap.png?raw=true)
 
