@@ -31,6 +31,11 @@ Finally, print the pairs of variables with absolute correlation > 0.5:
 
 In summary, a small subset of the variables have moderate correlations. THis is something to keep in mind, but we don't expect correlations of this level to strongly affect classification.
 
+Next, visualize the relationship between the predictor variables and the response (wine quality). Start by plotting a histogram of wine quality:
+
+![response_hist](images/response_hist.png?raw=true)
+
+
 ## Classification
 
 The variable we want to predict is quality, which is numeric and integer-valued.
