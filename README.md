@@ -51,4 +51,10 @@ In summary, a small subset of the variables have moderate correlations. This is 
 
 ## Classification
 
-The variable we want to predict is quality, which is numeric and integer-valued.
+The variable to be predicted is quality, which is numeric and integer-valued. As a challenge, I developed a classifier that is based only on linear models (R lm function). The aim is for this project to provide a useful case study for feature generation and ensemble methods, and it's easier to see the effect of these approaches if they are used with a base classifier that is relatively simple (as lm certainly is).
+
+### The framework for ensemble development
+
+I implemented a framework for developing and testing different ensembles that involves 2 rounds of nested crossvalidation:
+
+
