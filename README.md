@@ -51,10 +51,29 @@ In summary, a small subset of the variables have moderate correlations. This is 
 
 ## Classification
 
-The variable to be predicted is quality, which is numeric and integer-valued. As a challenge, I developed a classifier that is based only on linear models (R lm function). The aim is for this project to provide a useful case study for feature generation and ensemble methods, and it's easier to see the effect of these approaches if they are used with a base classifier that is relatively simple (as lm certainly is).
+The variable to be predicted is quality, which is numeric and integer-valued. As a challenge, I developed a classifier that is based only on linear regression models (R lm function). The aim is for this project to provide a useful case study for feature generation and ensemble methods, and it's easier to see the effect of these approaches if they are used with a base classifier that is relatively simple (as lm certainly is).
 
 ### The framework for ensemble development
 
-I implemented a framework for developing and testing different ensembles that involves 2 rounds of nested crossvalidation:
+I implemented a framework for developing and testing different ensembles that involves 2 rounds of nested crossvalidation. The outer crossvalidation is for evaluating the performance of the ensemble, the inner crossvalidation is for searching for single models to include in the ensemble. Pseudocode for the framework is:
+
+Split data into cross-validation folds (e.g. 5 folds)
+    Set one fold aside as ensemble hold-out, rest are ensemble development data
+    Initialize ensemble as empty list
+    For each model in ensemble:
+        Initialize model (e.g. all variables present at power 1, all interactions present)
+        For each step of model improvement:
+            If the model has not been evaluated before: leave it unchanged, so the next steps evaluate baseline                       performance  
+            Else: Make a random change to the model (change the poynomial degree of a variable, or add/drop an                       interaction)
+            Split ensemble development data into cross-validation folds (e.g. 10 folds), 
+                set one fold aside as model hold-out, rest are training data
+            Fit model to training data, evaluate on model hold-out data
+            If performance on model hold-out data is better than previous version of model, keep the change
+       Add model to ensemble
+   Fit each model in ensemble to entire development data
+   Compute prediction of each model in ensemble on ensemble hold-out
+   Take mean of these predictions -> this is ensemble prediction on hold-out
+   
+   
 
 
