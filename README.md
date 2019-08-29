@@ -57,22 +57,23 @@ The variable to be predicted is quality, which is numeric and integer-valued. As
 
 I implemented a framework for developing and testing different ensembles that involves 2 rounds of nested crossvalidation. The outer crossvalidation is for evaluating the performance of the ensemble, the inner crossvalidation is for searching for single models to include in the ensemble. Pseudocode for the framework is:
 
-Split data into cross-validation folds (e.g. 5 folds)
-    Set one fold aside as ensemble hold-out, rest are ensemble development data
-    Initialize ensemble as empty list
-    For each model in ensemble:
-        Initialize model (e.g. all variables present at power 1, all interactions present)
-        For each step of model improvement:
-            If the model has not been evaluated before: leave it unchanged, so the next steps evaluate baseline                       performance  
-            Else: Make a random change to the model (change the poynomial degree of a variable, or add/drop an                       interaction)
-            Split ensemble development data into cross-validation folds (e.g. 10 folds), 
+    Split data into cross-validation folds (e.g. 5 folds)
+        Set one fold aside as ensemble hold-out, rest are ensemble development data
+        Initialize ensemble as empty list
+        Until ensemble has desired number of models:
+            Initialize model (e.g. all variables present at power 1, all interactions present)
+            For each step of model improvement:
+                If the model has not been evaluated before: leave it unchanged, so the next steps evaluate baseline                                performance  
+                Else: Make a random change to the model (change the poynomial degree of a variable, or add/drop an                       interaction)
+                Split ensemble development data into cross-validation folds (e.g. 10 folds), 
                 set one fold aside as model hold-out, rest are training data
-            Fit model to training data, evaluate on model hold-out data
-            If performance on model hold-out data is better than previous version of model, keep the change
-       Add model to ensemble
-   Fit each model in ensemble to entire development data
-   Compute prediction of each model in ensemble on ensemble hold-out
-   Take mean of these predictions -> this is ensemble prediction on hold-out
+                For each training-holdout split: Fit model to training data, evaluate on model hold-out data
+            
+            If average performance on model hold-out data is better than previous version of model, keep the change
+            Add model to ensemble
+    Fit each model in ensemble to entire development data
+    Compute prediction of each model in ensemble on ensemble hold-out
+    Take mean of these predictions -> this is ensemble prediction on hold-out
    
    
 
