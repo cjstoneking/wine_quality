@@ -63,10 +63,9 @@ I implemented a framework for developing and testing different ensembles that in
         Until ensemble has desired number of models:
             Initialize model (e.g. all variables present at power 1, all interactions present)
             For each step of model improvement:
-                If the model has not been evaluated before: leave it unchanged, so the next steps evaluate baseline                                performance  
-                Else: Make a random change to the model (change the poynomial degree of a variable, or add/drop an                       interaction)
-                Split ensemble development data into cross-validation folds (e.g. 10 folds), 
-                set one fold aside as model hold-out, rest are training data
+                If the model has not been evaluated before: leave it unchanged, so the next steps evaluate baseline performance  
+                Else: Make a random change to the model (change the poynomial degree of a variable, or add/drop an interaction)
+                Split ensemble development data into cross-validation folds (e.g. 10 folds)
                 For each training-holdout split: Fit model to training data, evaluate on model hold-out data
             
             If average performance on model hold-out data is better than previous version of model, keep the change
