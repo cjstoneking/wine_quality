@@ -64,9 +64,9 @@ I implemented a framework for developing and testing different ensembles that in
             Initialize model to baseline state
             For each step of model improvement:
                 If the model has not been evaluated before: leave it unchanged
-                Else: Make a random change to the model (change the poynomial degree of a variable, or add/drop an interaction)
+                Else: Make a random change to the model
                 Split ensemble development data into cross-validation folds (e.g. 10 folds)
-                For each training-holdout split: Fit model to training data, evaluate on model hold-out data
+                For each training-holdout split: Fit model to training data, evaluate on holdout
             
             If average performance on model hold-out data is better than previous version of model, keep the change
             Add model to ensemble
