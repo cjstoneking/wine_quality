@@ -59,7 +59,8 @@ I implemented a framework for developing and testing different ensembles that in
 
 This diagram shows the nested crossvalidation approach:
 
-![ensemble_cv_schematic](images/ensemble_cv_schematic.png?raw=true)
+
+<img src="images/ensemble_cv_schematic.png?raw=true" alt="ensemble cv schematic" width="200" height="400">
 
 Written in pseudocode, the framework reads as:
 
