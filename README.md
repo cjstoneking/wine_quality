@@ -61,14 +61,14 @@ I implemented a framework for developing and testing different ensembles that in
         Set one fold aside as ensemble hold-out, rest are ensemble development data
         Initialize ensemble as empty list
         Until ensemble has desired number of models:
-            Initialize model to baseline state
+            Initialize a new model to baseline state
             For each step of model improvement:
                 If the model has not been evaluated before: leave it unchanged
                 Else: Make a random change to the model
                 Split ensemble development data into cross-validation folds (e.g. 10 folds)
                 For each training-holdout split: Fit model to training data, evaluate on holdout
             
-            If average performance on model hold-out data is better than previous version of model, keep the change
+                If average performance on model hold-out data is better than previous version of model: keep the change
             Add model to ensemble
     Fit each model in ensemble to entire development data
     Compute prediction of each model in ensemble on ensemble hold-out
