@@ -53,7 +53,7 @@ In summary, a small subset of the variables have moderate correlations. This is 
 
 The variable to be predicted is quality, which is numeric and integer-valued. As a challenge, I developed a classifier that is based only on linear regression models (R lm function). The aim is for this project to provide a useful case study for feature generation and ensemble methods, and it's easier to see the effect of these approaches if they are used with a base classifier that is relatively simple (as lm certainly is).
 
-### The framework for ensemble development
+### The classification method: ensembles of polynomial regression models
 
 I implemented a framework for developing and testing different ensembles that involves 2 rounds of nested crossvalidation. The outer crossvalidation is for evaluating the performance of the ensemble, the inner crossvalidation is for searching for single models to include in the ensemble. The search for single models proceeds by first initializing a linear model to the baseline state, which, for example, could be that all variables are present raised to the first power, and no interactions are present. Following initialization, the model is randomly changed by raising or lowering the power of variables (setting its power to zero drops a variable from the model) and adding or removing interactions. The effect of these changes is assessed using the hold-out set of the inner crossvalidation, and the change is kept if it improves performance. The search procedure is repeated several times to yield an ensemble, and the performance of the entire ensemble is assessed using the hold-out set of the outer crossvalidation. 
 
@@ -82,5 +82,7 @@ Written in pseudocode, the framework reads as:
     Take mean of these predictions -> this is ensemble prediction on hold-out
    
    
-When testing different ensemble hyperparameters, I compare the results to those obtained by fitting a single linear model which
+When testing different ensemble hyperparameters, I compare the results to those obtained by fitting a single linear model at the baseline state. The ensemble has two advantages over the baseline model: the ensemble models are (hopefully) somewhat improved over the baseline model, and the ensembling itself (averaging over multiple different models) should also improve performance.
+
+### Classification results
 
