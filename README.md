@@ -82,7 +82,10 @@ Written in pseudocode, the framework reads as:
     Take mean of these predictions -> this is ensemble prediction on hold-out
    
    
-When testing different ensemble hyperparameters, I compare the results to those obtained by fitting a single linear model at the baseline state. The ensemble has two advantages over the baseline model: the ensemble models are (hopefully) somewhat improved over the baseline model, and the ensembling itself (averaging over multiple different models) should also improve performance.
+When testing different ensemble hyperparameters, I always compare the results to those obtained by fitting a single linear model at the baseline state. The ensemble has two advantages over the baseline model: the ensemble models are (hopefully) somewhat improved over the baseline model, and the ensembling itself (averaging over multiple different models) should also improve performance.
 
 ### Classification results
 
+First of all, I want to determine how much better the single ensemble models are than the baseline model. To do so, I generate an ensemble consisting of just a single model and compare its performance with the baseline model.
+
+Next, I want to determine how much performance is improved by adding more models to the ensemble.
