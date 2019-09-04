@@ -86,7 +86,7 @@ When testing different ensemble hyperparameters, I always compare the results to
 
 ### Classification results
 
-First of all, I wanted to determine how much better the single ensemble models are than the baseline model. To do so, I generated an ensemble consisting of just a single model and compare its performance with the baseline model. I measured performance with 5-fold crossvalidation at the outer level and repeated the whole process 10 times, so a total of 50 different single model / baseline model pairs were generated and evaluated. I took means over their results.
+First of all, I wanted to determine how much better the single ensemble models are than the baseline model. To do so, I generated an ensemble consisting of just a single model and compared its performance with the baseline model. I measured performance with 5-fold crossvalidation at the outer level and repeated the whole process 10 times, so a total of 50 different single model / baseline model pairs were generated and evaluated. As an error metric, I used mean absolute deviation of the predicted quality values from the true values. I took means over the results from different models within both groups:
 
       [1] "mean error of baseline model   =  0.570006915271802"
       [1] "mean error of ensemble         =  0.561367379094108"
