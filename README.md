@@ -1,4 +1,4 @@
-# Wine Quality
+# Predicting Wine Quality
 
 ![row of wineglasses](images/row_wine_glasses_utdallas.jpg?raw=true)
 ###### (image credit www.utdallas.edu)
