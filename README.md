@@ -55,7 +55,7 @@ The variable to be predicted is quality, which is numeric and integer-valued. As
 
 ### The classification method: ensembles of polynomial regression models
 
-I implemented a framework for developing and testing different ensembles that involves 2 rounds of nested crossvalidation. The outer crossvalidation is for evaluating the performance of the ensemble, the inner crossvalidation is for searching for single models to include in the ensemble. The search for single models proceeds by first initializing a linear model to the baseline state, which typically will be that all variables are present, raised to the first power, and no interactions are present. Following initialization, the model is randomly changed by raising or lowering the power of variables (setting its power to zero drops a variable from the model) and adding or removing interactions. The effect of these changes is assessed using the hold-out set of the inner crossvalidation, and the change is kept if it improves performance. The search procedure is repeated several times to yield an ensemble of models, and the performance of the entire ensemble is assessed using the hold-out set of the outer crossvalidation. 
+I implemented a framework that allows entire ensembles of polynomial regression models to be trained and tested. Essentially, this framework consists of 2 rounds of nested crossvalidation. The outer crossvalidation is for evaluating the performance of the ensemble, whereas the inner crossvalidation is for searching for single models to include in the ensemble. The search for single models proceeds by first initializing a linear model to the baseline state, which typically will be that all variables are present, raised to the first power, and no interactions are present. Following initialization, the model is randomly changed by raising or lowering the power of variables (setting its power to zero drops a variable from the model) and adding or removing interactions. The effect of these changes is assessed using the hold-out set of the inner crossvalidation, and the change is kept if it improves performance. The search procedure is repeated several times to yield an ensemble of models, and the performance of the entire ensemble is assessed using the hold-out set of the outer crossvalidation. 
 
 This diagram shows the nested crossvalidation approach:
 
@@ -93,6 +93,18 @@ First of all, I wanted to determine how much better the single ensemble models a
       [1] "SEM of error of baseline model =  0.00356751251098776"
       [1] "SEM of error of ensemble       =  0.0014630142723505"
 
-So the iterative model refinement definitely helps performance, although the effect is only slight - 0.561/0.57 is approximately a 2% reduction in error. However, using a single improved model has essentially the same runtime and ease of interpretation as running the baseline model, so it is a nice small win.
+So the iterative model refinement definitely helps performance, although the effect is only slight - 0.561/0.57 is approximately a 2% reduction in error. However, using a single improved model has essentially the same runtime and ease of interpretation as running the baseline model, so it is still worthwhile to implement.
 
-Next, I wanted to determine how much performance is improved by adding more models to the ensemble.
+Next, I wanted to determine how much performance is improved by averaging over a full ensemble as opposed to using a single model. To do so, I trained ensembles and tracked both the performance of the entire ensemble as well as the performance of each individual model. Here are representative results from one ensemble:
+
+      [1] "error of ensemble                 =  0.557209221381607"
+      [1] "errors of single models           =
+      [1] 0.5627614 0.5663298 0.5611375 0.5653500 0.5611254 0.5617978 0.5622573
+      [8] 0.5616120 0.5580755 0.5605172
+      [1] "mean difference ensemble - single =  -0.00488716193646453"
+
+So the population average of the ensemble does perform better than any individual model within it, but the effect is very small. In this case, it is a reduction in error of 0.005, corresponding to approximately 0.9% reduction in error.
+
+### Conclusion
+
+Using iterative model refinement results in small improvements in performance (approx 2% in testing). Using an ensemble of refined models results in a smaller improvement in performance (approx 0.9%). If this were a real-world application, it might be the case that using an ensemble would not be worth the extra complexity involved.
