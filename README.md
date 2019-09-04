@@ -86,6 +86,13 @@ When testing different ensemble hyperparameters, I always compare the results to
 
 ### Classification results
 
-First of all, I want to determine how much better the single ensemble models are than the baseline model. To do so, I generate an ensemble consisting of just a single model and compare its performance with the baseline model.
+First of all, I wanted to determine how much better the single ensemble models are than the baseline model. To do so, I generated an ensemble consisting of just a single model and compare its performance with the baseline model. I measured performance with 5-fold crossvalidation at the outer level and repeated the whole process 10 times, so a total of 50 different single model / baseline model pairs were generated and evaluated. I took means over their results.
 
-Next, I want to determine how much performance is improved by adding more models to the ensemble.
+      [1] "mean error of baseline model   =  0.570006915271802"
+      [1] "mean error of ensemble         =  0.561367379094108"
+      [1] "SEM of error of baseline model =  0.00356751251098776"
+      [1] "SEM of error of ensemble       =  0.0014630142723505"
+
+So the iterative model refinement definitely helps performance, although the effect is only slight - 0.561/0.57 is approximately a 2% reduction in error. However, using a single improved model has essentially the same runtime and ease of interpretation as running the baseline model, so it is a nice small win.
+
+Next, I wanted to determine how much performance is improved by adding more models to the ensemble.
