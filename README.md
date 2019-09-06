@@ -7,28 +7,28 @@
 
 ## Overview
 
-In this project, I analyze a publically available [dataset](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/) to try to determine which factors influence the quality of wine. As a challenge, I try to do so using only the linear model (lm) as a base classifier, and use various feature generation and ensembling strategies to improve its performance.
+In this project, I analyze a publically available [dataset](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/), which consists of various chemical measurements of different wines, as well as a quality score for each wine. The challenge is to try to predict the quality score, given these measurements. I first visualize several aspects of the dataset, focusing in particular on the problem of trying to satisfactorily display the relationship between a large number of continuous variables (the measurements) and a discrete response (the quality score). Then, I develop a model for predicting the quality score.  As an exercise, I do so using only the linear model (lm) as a base model, and try to make this simple model perform as well as possible, by implementing automatic feature selection and ensembling. 
 
 ## Exploratory Data Analysis
 
-To begin with, we would like to visualize the relationship between the predictor variables and the response (wine quality). Start by plotting a histogram of wine quality: 
+To begin with, I would like to visualize the relationship between the predictor variables (various chemical measurements such as pH) and the response (wine quality). I start by plotting a histogram of wine quality: 
 
 ![response_hist](images/response_hist_with_curve_cropped.png?raw=true)
 
-Note that wine quality takes integer values, so the discretization in the histogram is present in the data, it is not caused by binning. The blue curve is a normal distribution fit to the data, and it is clearly a good fit. Therefore, wine quality appears to be approximately a discretization of a normally distributed random variable, which is reassuring, because it suggests that the assumptions of the linear model are valid.
+Note that wine quality takes integer values, so the discretization in the histogram is present in the data, it is not caused by binning. The blue curve is a normal distribution fit to these data, and it is clearly a good fit. Therefore, wine quality appears to be approximately a discretization of a normally distributed random variable, which is reassuring, because it suggests that the assumptions of the linear model are valid.
 
-To visualize the relationship between predictors and wine quality, we can start with boxplots of the predictors, grouped by different quality values. This takes advantage of the discretization already present in the quality values.
+To visualize the relationship between predictors and wine quality, I first try to use boxplots of the predictors, grouped by different quality values. This takes advantage of the discretization already present in the quality values.
 
 ![boxplot](images/boxplot_grouped_by_response.png?raw=true)
 
 The disadvantage of this particular plot is that the numbers of data points with different quality values vary (the numbers can be read directly from the quality histogram). The boxplots at the extreme ends of the quality range are based on fewer data points and hence less reliable. 
-To address these issues, we can try an alternative approach, which is to draw scatter plots of quality vs. predictors, and use ggplot's geom_count() to visualize overlapping points as solid area.
+To address these issues, I have tried an alternative approach, which is to draw scatter plots of quality vs. predictors, and use ggplot's geom_count() to visualize overlapping points as solid area.
 
 ![separate_regressions](images/separate_regressions.png?raw=true)
 
 This plot clearly shows the smaller number of data points available for extreme values of quality. From either of these plots, we can see that there is a strong correlation between alcohol and quality, and moderate to weak correlations for some of the other predictors.
 
-Next, we want to check for correlations between the predictor variables. The first step is a pairs plot:
+Next, I want to check for correlations between the predictor variables. The first step is a pairs plot:
 
 ![pairs plot](images/pairs_plot.png?raw=true)
 
@@ -51,7 +51,8 @@ In summary, a small subset of the variables have moderate correlations. This is 
 
 ## Classification
 
-The variable to be predicted is quality, which is numeric and integer-valued. As a challenge, I developed a classifier that is based only on linear regression models (R lm function). The aim is for this project to provide a useful case study for feature generation and ensemble methods, and it's easier to see the effect of these approaches if they are used with a base classifier that is relatively simple, as lm certainly is. The models are allowed to use features that consist of the variables raised to various powers, so they end up performing polynomial regression. The features are selected automatically using crossvalidation - see details below.
+The variable to be predicted is quality, which is numeric and integer-valued. As a challenge, I developed a model that is based only on linear regression models (R lm function). The motivation for this is that I want this project to provide a useful case study for automatic feature selection and ensemble methods, and it's easier to see the effect of these approaches if they are used with a simple base classifier such as lm.
+My approach for automatic feature selection is that I implement polynomial regression, i.e. the models are allowed to use features that consist of the variables raised to various powers, and automatically select the powers of the different variables using crossvalidation.
 
 ### The classification method: ensembles of polynomial regression models
 
