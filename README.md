@@ -7,7 +7,7 @@
 
 ## Overview
 
-In this project, I analyze a publically available [dataset](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/), which consists of various chemical measurements of different wines, as well as a quality score for each wine. The challenge is to try to predict the quality score, given these measurements. I first visualize several aspects of the dataset, focusing in particular on the problem of trying to satisfactorily display the relationship between a large number of continuous variables (the measurements) and a discrete response (the quality score). Then, I develop a model for predicting the quality score.  As an exercise, I do so using only the linear model (lm) as a base model, and try to make this simple model perform as well as possible, by implementing automatic feature selection and ensembling. 
+In this project, I analyze a publically available [dataset](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/), which consists of various chemical measurements of different wines, as well as a quality score for each wine. The challenge is to try to predict the quality score, given these measurements. I first visualize several aspects of the dataset, focusing in particular on the problem of trying to satisfactorily display the relationship between a large number of continuous variables (the measurements) and a discrete response (the quality score). Then I develop a model for predicting the quality score.  As an exercise, I do so using only the linear model (lm) as a base model, and try to make this simple model perform as well as possible, by implementing automatic feature selection and ensembling. 
 
 ## Exploratory Data Analysis
 
